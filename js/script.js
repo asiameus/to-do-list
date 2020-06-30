@@ -25,6 +25,21 @@
         taskListElement.innerHTML = listElementsString;
     };
 
+    const addTask = (event) => {
+        event.preventDefault();
+        tasks.push({
+            name: document.querySelector(".js-formInput").value.trim(),
+            done: false,
+        });
 
-    render();
+        render();
+    };
+
+    const init = () => {
+        document.querySelector(".js-form").addEventListener("submit", addTask);
+        render();
+    };
+
+    init();
+
 }
