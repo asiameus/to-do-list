@@ -1,17 +1,34 @@
 .form {
+    display: flex;
     padding: 30px;
+    flex-wrap: wrap;
 }
 
 .form__input {
+    flex-grow: 1;
     border: 2px solid #f1f1f1;
     padding: 10px;
+}
+
+@media (max-width: 767px) {
+    .form__input {
+        flex-basis: 100%;
+    }
 }
 
 .form__button {
     background-color: teal;
     color: white;
-    padding: 11px;
+    padding: 10px;
+    margin-left: 20px;
     border: none;
     font-family: 'Montserrat', sans-serif;
     font-size: 16px;
+}
+
+@media (max-width: 767px) {
+    .form__button {
+        flex-basis: 100%;
+        margin: 20px 0;
+    }
 }
