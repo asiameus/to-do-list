@@ -1,0 +1,13 @@
+.section {
+    display: flex;
+    flex-basis: 1000px;
+    flex-direction: column;
+    align-items: stretch;
+    background-color: white;
+    margin-bottom: 10px;
+}
+
+.section__header {
+    padding: 30px;
+    border-bottom: 2px solid #f1f1f1;
+}
