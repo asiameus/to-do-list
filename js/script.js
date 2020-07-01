@@ -35,6 +35,14 @@
                 toggleTaskDone(index);
             });
         });
+
+        const removeButtons = document.querySelectorAll(".js-buttonRemove");
+
+        removeButtons.forEach((removeButton, index) => {
+            removeButton.addEventListener("click", () => {
+                removeTask(index);
+            });
+        });
     };
 
     const addTask = (event) => {
@@ -55,6 +63,11 @@
         };
         render();
     };
+
+    const removeTask = (taskIndex) => {
+        tasks.splice(taskIndex, 1);
+        render();
+    }
 
 
     const init = () => {
