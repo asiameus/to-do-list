@@ -1,0 +1,4 @@
+
+.taskList__name--done {
+    text-decoration: line-through;
+}
