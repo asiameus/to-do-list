@@ -16,14 +16,15 @@
         for (let i = 0; i < tasks.length; i++) {
 
             listItemssString += `<li class="taskList__item">`;
-            listItemssString += `<button class="taskList__button--done js-buttonDone">✅</button>`;
             if (tasks[i].done === true) {
+                listItemssString += `<button class="taskList__button js-buttonDone"><img src="img/check.svg"></button>`;
                 listItemssString += `<span class="taskList__name taskList__name--done">${tasks[i].name}</span>`;
             }
             else {
+                listItemssString += `<button class="taskList__button js-buttonDone"></button>`;
                 listItemssString += `<span class="taskList__name">${tasks[i].name}</span>`;
             };
-            listItemssString += `<button class="taskList__button--remove js-buttonRemove">🗑️</button></li>`;
+            listItemssString += `<button class="taskList__button taskList__button--remove js-buttonRemove"><img src="img/trash-2.svg"></button></li>`;
         };
 
         document.querySelector(".js-taskList").innerHTML = listItemssString;
