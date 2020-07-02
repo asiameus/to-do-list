@@ -13,16 +13,16 @@
     const render = () => {
         let listItemssString = "";
 
-        for (let i = 0; i < tasks.length; i++) {
+        for (const task of tasks) {
 
             listItemssString += `<li class="taskList__item">`;
-            if (tasks[i].done === true) {
+            if (task.done === true) {
                 listItemssString += `<button class="taskList__button js-buttonDone"><img src="img/check.svg"></button>`;
-                listItemssString += `<span class="taskList__name taskList__name--done">${tasks[i].name}</span>`;
+                listItemssString += `<span class="taskList__name taskList__name--done">${task.name}</span>`;
             }
             else {
-                listItemssString += `<button class="taskList__button js-buttonDone"></button>`;
-                listItemssString += `<span class="taskList__name">${tasks[i].name}</span>`;
+                listItemssString += `<button class="taskList__button js-buttonDone"> </button>`;
+                listItemssString += `<span class="taskList__name">${task.name}</span>`;
             };
             listItemssString += `<button class="taskList__button taskList__button--remove js-buttonRemove"><img src="img/trash-2.svg"></button></li>`;
         };
@@ -46,13 +46,21 @@
         });
     };
 
-    const addTask = (event) => {
-        event.preventDefault();
+    const addTask = (newTaskContent) => {
         tasks.push({
-            name: document.querySelector(".js-formInput").value.trim(),
+            name: newTaskContent,
             done: false,
         });
         render();
+    }
+
+    const onFormSubmit = (event) => {
+        event.preventDefault();
+        const newTaskContent = document.querySelector(".js-formInput").value.trim();
+        if (newTaskContent === "") {
+            return;
+        }
+        addTask(newTaskContent);
     };
 
     const toggleTaskDone = (taskIndex) => {
@@ -72,7 +80,7 @@
 
 
     const init = () => {
-        document.querySelector(".js-form").addEventListener("submit", addTask);
+        document.querySelector(".js-form").addEventListener("submit", onFormSubmit);
         render();
     };
 
