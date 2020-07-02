@@ -54,22 +54,8 @@
         render();
     }
 
-    const onFormSubmit = (event) => {
-        event.preventDefault();
-        const newTaskContent = document.querySelector(".js-formInput").value.trim();
-        if (newTaskContent === "") {
-            return;
-        }
-        addTask(newTaskContent);
-    };
-
     const toggleTaskDone = (taskIndex) => {
-        if (tasks[taskIndex].done) {
-            tasks[taskIndex].done = false;
-        }
-        else {
-            tasks[taskIndex].done = true;
-        };
+        tasks[taskIndex].done = !tasks[taskIndex].done
         render();
     };
 
@@ -78,6 +64,14 @@
         render();
     }
 
+    const onFormSubmit = (event) => {
+        event.preventDefault();
+        const newTaskContent = document.querySelector(".js-formInput").value.trim();
+        if (newTaskContent === "") {
+            return;
+        }
+        addTask(newTaskContent);
+    };
 
     const init = () => {
         document.querySelector(".js-form").addEventListener("submit", onFormSubmit);
