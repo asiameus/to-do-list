@@ -41,7 +41,7 @@
         });
     };
 
-    const addTask = (newTaskContent) => {
+    const addNewTask = (newTaskContent) => {
         tasks.push({
             name: newTaskContent,
             done: false,
@@ -59,21 +59,29 @@
         render();
     }
 
+    const resetInput = (formInputElement) => {
+        formInputElement.value = "";
+        formInputElement.focus();
+    }
+
     const onFormSubmit = (event) => {
         event.preventDefault();
-        const newTaskContent = document.querySelector(".js-formInput").value.trim();
+        const formInputElement = document.querySelector(".js-formInput");
+        const newTaskContent = formInputElement.value.trim();
+
         if (newTaskContent === "") {
+            formInputElement.focus();
             return;
         }
-        addTask(newTaskContent);
+
+        addNewTask(newTaskContent);
+        resetInput(formInputElement);
     };
 
     const init = () => {
-        document.querySelector(".js-form").addEventListener("submit", onFormSubmit);
         render();
+        document.querySelector(".js-form").addEventListener("submit", onFormSubmit);
     };
 
-
     init();
-
 }
