@@ -1,14 +1,5 @@
 {
-    const tasks = [
-        {
-            name: "zrobić aplikację",
-            done: false,
-        },
-        {
-            name: "zrobić zakupy",
-            done: true,
-        }
-    ];
+    const tasks = [];
 
     const render = () => {
         let listItemssString = "";
@@ -29,6 +20,10 @@
 
         document.querySelector(".js-taskList").innerHTML = listItemssString;
 
+        bindEvents();
+    };
+
+    const bindEvents = () => {
         const doneButtons = document.querySelectorAll(".js-buttonDone");
 
         doneButtons.forEach((doneButton, index) => {
