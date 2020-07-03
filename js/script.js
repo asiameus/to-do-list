@@ -8,11 +8,11 @@
 
             listItemssString += `<li class="taskList__item">`;
             if (task.done === true) {
-                listItemssString += `<button class="taskList__button js-buttonDone"><img src="img/check.svg"></button>`;
+                listItemssString += `<button class="taskList__button taskList__button--toggleDone js-buttonDone"><img src="img/check.svg"></button>`;
                 listItemssString += `<span class="taskList__name taskList__name--done">${task.name}</span>`;
             }
             else {
-                listItemssString += `<button class="taskList__button js-buttonDone"></button>`;
+                listItemssString += `<button class="taskList__button taskList__button--toggleDone js-buttonDone"></button>`;
                 listItemssString += `<span class="taskList__name">${task.name}</span>`;
             };
             listItemssString += `<button class="taskList__button taskList__button--remove js-buttonRemove"><img src="img/trash-2.svg"></button></li>`;
