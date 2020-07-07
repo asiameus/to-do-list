@@ -1,7 +1,7 @@
 {
-    const tasks = [];
+    let tasks = [];
 
-    const render = () => {
+    const renderTaskList = () => {
         let listItemssString = "";
 
         for (const task of tasks) {
@@ -21,7 +21,10 @@
         };
 
         document.querySelector(".js-taskList").innerHTML = listItemssString;
+    }
 
+    const render = () => {
+        renderTaskList();
         bindEvents();
     };
 
@@ -43,31 +46,50 @@
         });
     };
 
-    const addNewTask = (newTaskContent) => {
-        tasks.push({
-            name: newTaskContent,
-            done: false,
-        });
+    const addNewTask = (newTaskName) => {
+        tasks = [
+            ...tasks,
+            { name: newTaskName, done: false },
+        ];
+
         render();
     }
 
     const toggleTaskDone = (taskIndex) => {
-        tasks[taskIndex].done = !tasks[taskIndex].done
+        if (tasks[taskIndex].done) {
+            tasks = [
+                ...tasks.slice(0, taskIndex),
+                { ...tasks[taskIndex], done: false },
+                ...tasks.slice(taskIndex + 1),
+            ];
+        }
+        else {
+            tasks = [
+                ...tasks.slice(0, taskIndex),
+                { ...tasks[taskIndex], done: true },
+                ...tasks.slice(taskIndex + 1),
+            ];
+        }
+
         render();
     };
 
     const removeTask = (taskIndex) => {
-        tasks.splice(taskIndex, 1);
+        tasks = [
+            ...tasks.slice(0, taskIndex),
+            ...tasks.slice(taskIndex + 1),
+        ];
+        
         render();
     }
 
     const onFormSubmit = (event) => {
         event.preventDefault();
         const formInputElement = document.querySelector(".js-formInput");
-        const newTaskContent = formInputElement.value.trim();
+        const newTaskName = formInputElement.value.trim();
 
-        if (newTaskContent !== "") {
-            addNewTask(newTaskContent);
+        if (newTaskName !== "") {
+            addNewTask(newTaskName);
             formInputElement.value = "";
         }
 
