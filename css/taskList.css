@@ -27,6 +27,7 @@
     flex-shrink: 0;
     flex-basis: 45px;
     height: 45px;
+    transition: 0.3s;
 }
 
 .taskList__button--toggleDone {
