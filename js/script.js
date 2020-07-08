@@ -81,7 +81,7 @@
                         ...tasks.slice(index + 1),
                     ];
                 });
-                allTasksDone = true;
+                allTasksDone = !allTasksDone;
                 render();
             });
         };
