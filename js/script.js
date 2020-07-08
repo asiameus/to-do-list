@@ -1,7 +1,6 @@
 {
     let tasks = [];
     let doneTasksHidden = false;
-    let allTasksDone = false;
 
     const renderTaskList = () => {
         let listItemsString = "";
@@ -37,13 +36,16 @@
     }
 
     const renderButtons = () => {
+        let buttonsString = "";
         if (tasks.length !== 0) {
             buttonsString =
                 `<button class="section__button section__button--hideDone js-buttonHideDone">${doneTasksHidden ? "Pokaż ukończone" : "Ukryj ukończone"}</button>
-                <button class="section__button section__button--toggleAllDone js-buttonToggleAllDone"${allTasksDone ? "disabled" : ""}>Ukończ wszystkie</button>`;
-            document.querySelector(".js-buttonContainer").innerHTML = buttonsString;
-        };
-
+                <button class="section__button section__button--toggleAllDone js-buttonToggleAllDone"${tasks.every(({done}) => done) ? "disabled" : ""}>Ukończ wszystkie</button>`;
+        }
+        else {
+            buttonsString = "";
+        }
+        document.querySelector(".js-buttonContainer").innerHTML = buttonsString;
     }
 
     const bindEvents = () => {
@@ -62,6 +64,7 @@
                 removeTask(index);
             });
         });
+        
     };
 
     const bindButtonEvents = () => {
@@ -81,7 +84,6 @@
                         ...tasks.slice(index + 1),
                     ];
                 });
-                allTasksDone = !allTasksDone;
                 render();
             });
         };
