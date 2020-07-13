@@ -11,6 +11,10 @@
     border-bottom: 2px solid #f1f1f1;
 }
 
+.taskList__item--hidden {
+    display: none;
+}
+
 .taskList__name {
     flex-grow: 1;
     margin-left: 20px;
