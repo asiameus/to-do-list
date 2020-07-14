@@ -18,30 +18,27 @@
 </head>
 
 <body class="body">
-    <div class="body__container">
+    <main class="main">
         <header class="header">
             <h1 class="header__title">Lista zadań</h1>
         </header>
-        <main class="main">
-            <section class="section">
-                <div class="section__header">
-                    <h2 class="section__title">Dodaj nowe zadanie</h2>
-                </div>
-                <form class="form js-form">
-                    <input class="form__input js-formInput" name="newTask" placeholder="Co jest do zrobienia?"
-                        autofocus>
-                    <button class="form__button">Dodaj zadanie</button>
-                </form>
-            </section>
-            <section class="section">
-                <div class="section__header">
-                    <h2 class="section__title">Lista zadań</h2>
-                    <div class="section__buttonContainer js-buttonContainer"></div>
-                </div>
-                <ul class="taskList js-taskList"></ul>
-            </section>
-        </main>
-    </div>
+        <section class="section">
+            <div class="section__header">
+                <h2 class="section__title">Dodaj nowe zadanie</h2>
+            </div>
+            <form class="form js-form">
+                <input class="form__input js-formInput" name="newTask" placeholder="Co jest do zrobienia?" autofocus>
+                <button class="form__button">Dodaj zadanie</button>
+            </form>
+        </section>
+        <section class="section">
+            <div class="section__header">
+                <h2 class="section__title">Lista zadań</h2>
+                <div class="section__buttonContainer js-buttonContainer"></div>
+            </div>
+            <ul class="taskList js-taskList"></ul>
+        </section>
+    </main>
 </body>
 
 </html>
